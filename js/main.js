@@ -11,9 +11,21 @@ window.addEventListener("DOMContentLoaded", () => {
     },
     methods: {
       getData() {
-        axios.get(this.apiEndpoint).then((resp) => {
+        cdArray = [];
+        const paramObject = {
+          params: {},
+        };
+        for (const [key, value] of Object.entries(this.activeFilters)) {
+          if (value) {
+            paramObject.params[key] = value;
+          }
+        }
+        console.log(paramObject);
+        axios.get(this.apiEndpoint, paramObject).then((resp) => {
+          // debugger;
           console.log(resp.data.response);
           this.cdArray = resp.data.response;
+
           this.getFiltersObject();
         });
       },
@@ -23,9 +35,10 @@ window.addEventListener("DOMContentLoaded", () => {
           for (const [key, value] of Object.entries(currentCd)) {
             if (!this.excludedFilterKeys.includes(key)) {
               if (!newObject[key]) {
-                newObject[key] = [];
+                newObject[key] = [value];
+              } else if (!newObject[key].includes(value)) {
+                newObject[key].push(value);
               }
-              newObject[key].push(value);
             }
           }
         });

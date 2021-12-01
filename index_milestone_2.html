@@ -25,14 +25,15 @@
             <div class="row justify-content-center py-4">
                 <div class="col" v-for="(element,key) in filtersObject">
                     <label class=" d-block text-white" for="key">{{key}}</label>
-                    <select class="w-100" :name="key" :id="key+'-filter'">
+                    <select class="w-100" :name="key" :id="key+'-filter'"
+                        @change="setActiveFilter(key,$event.target.value)">
                         <option value="">no filter</option>
                         <option v-for="value in filtersObject[key]" :value="value">{{value}}</option>
 
                     </select>
                 </div>
                 <div class="col">
-                    <div class="btn btn-primary w-100">filter</div>
+                    <div class="btn btn-primary w-100" @click="getData">filter</div>
                 </div>
             </div>
             <div class="row row-cols-5 g-5">

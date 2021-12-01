@@ -1,0 +1,38 @@
+header {
+  background-color: #2b3a46;
+}
+body {
+  background-color: #192d3b;
+}
+.logo-container {
+  max-width: 40px;
+}
+.logo-image {
+  /* height: 100%; */
+  width: 100%;
+}
+.shell {
+  overflow: hidden;
+  padding: 50px 0;
+}
+.cd-card {
+  background-color: #2b3a46;
+  padding: 20px;
+  height: 100%;
+  text-align: center;
+  cursor: pointer;
+}
+.cd-card-title {
+  color: white;
+  text-transform: uppercase;
+  font-size: 24px;
+  margin: 30px 0;
+}
+
+.cd-card-name,
+.cd-card-year {
+  padding: 0;
+  margin: 0;
+  color: gray;
+  font-size: 18px;
+}
